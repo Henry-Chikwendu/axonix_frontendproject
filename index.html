@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXONIX</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">AXONIX</div>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./gaming.html">Gaming</a></li>
+        <li><a href="./wearables.html">Wearables</a></li>
+        <li><a href="./gadgets.html">Gadgets</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><i class="fas fa-shopping-cart cart-icon"></i></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+      <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total:</span>
+        <span class="cart-total-value" id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to AXONIX</h1>
+    <p class="subtitle">Your Premium Tech Marketplace</p>
+    <p class="description">Discover the latest in gaming gear, wearables, and cutting-edge gadgets</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary">Shop Gaming</a>
+      <a href="#" class="btn btn-outline">Explore Wearables</a>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="trust-badges">
+    <div class="badges-grid">
+      <div class="badge-item">
+        <div class="badge-icon"><i class="fas fa-truck"></i></div>
+        <h3>Free Shipping</h3>
+        <p>On orders over $100</p>
+      </div>
+      <div class="badge-item">
+        <div class="badge-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Secure Payment</h3>
+        <p>100% protected transactions</p>
+      </div>
+      <div class="badge-item">
+        <div class="badge-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Best Quality</h3>
+        <p>Premium products only</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Category -->
+  <section class="categories">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="categories-grid">
+      <a href="./gaming.html">
+      <div class="category-card gaming">
+        <div class="cat-icon"><i class="fas fa-gamepad"></i></div>
+        <h3>Gaming</h3>
+        <p>Keyboards, mice, headsets & more</p>
+      </div>
+      </a>
+      <div class="category-card wearables">
+        <div class="cat-icon"><i class="fas fa-stopwatch"></i></div>
+        <h3>Wearables</h3>
+        <p>Smartwatches, earbuds & trackers</p>
+      </div>
+      <div class="category-card gadgets">
+        <div class="cat-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Gadgets</h3>
+        <p>Chargers, hubs & accessories</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&h=250&fit=crop"
+          alt="RGB Gaming Keyboard" class="product-image">
+        <div class="product-info">
+          <h3>RGB Gaming Keyboard</h3>
+          <p class="desc">Mechanical RGB keyboard with customizable backlighting</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.8</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$129.99</span>
+            <button class="btn-add"><i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=250&fit=crop"
+          alt="Wireless Gaming Mouse" class="product-image">
+        <div class="product-info">
+          <h3>Wireless Gaming Mouse</h3>
+          <p class="desc">High-precision wireless gaming mouse with 16000 DPI</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.7</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$79.99</span>
+            <button class="btn-add"><i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=250&fit=crop"
+          alt="Gaming Headset Pro" class="product-image">
+        <div class="product-info">
+          <h3>Gaming Headset Pro</h3>
+          <p class="desc">7.1 surround sound gaming headset with noise cancellation</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.9</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$149.99</span>
+            <button class="btn-add"><i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=400&h=250&fit=crop"
+          alt="Gaming Controller Elite" class="product-image">
+        <div class="product-info">
+          <h3>Gaming Controller Elite</h3>
+          <p class="desc">Premium wireless controller with customizable buttons</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.6</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$89.99</span>
+            <button class="btn-add">
+            <i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=250&fit=crop"
+          alt="144Hz Gaming Monitor" class="product-image">
+        <div class="product-info">
+          <h3>144Hz Gaming Monitor</h3>
+          <p class="desc">27-inch 144Hz QHD gaming monitor with HDR</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.8</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$299.99</span>
+            <button class="btn-add"><i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&h=250&fit=crop"
+          alt="Gaming Mouse Pad XXL" class="product-image">
+        <div class="product-info">
+          <h3>Gaming Mouse Pad XXL</h3>
+          <p class="desc">Extra large RGB mouse pad with smooth surface</p>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <span>4.5</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">$29.99</span>
+            <button class="btn-add"><i class="fas fa-cart-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all-container">
+      <button class="btn-view-all">View All Products</button>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Join the AXONIX Community</h2>
+    <p>Get exclusive deals, early access to new products, and tech tips</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email">
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">AXONIX</span>
+        <p>Your premium destination for gadgets, gaming devices, and wearables.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Gaming</a></li>
+          <li><a href="#">Wearables</a></li>
+          <li><a href="#">Gadgets</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AXONIX. All rights reserved. Built by <a href="#">Henry Chikwendu</a></p>
+    </div>
+  </footer>
+  <script src="app.js">
+  </script>
+
+</body>
+
+</html>
