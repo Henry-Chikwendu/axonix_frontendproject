@@ -440,12 +440,17 @@
    background: #fff;
  }
 
+ .category-gaming h3 {
+  text-decoration: none;
+ }
+
  .section-title {
    text-align: center;
    font-size: 28px;
    font-weight: 600;
    color: #1a1a1a;
    margin-bottom: 50px;
+   text-decoration: none;
  }
 
  .categories-grid {
@@ -843,3 +848,77 @@
      flex-direction: column;
    }
  }
+
+ /* ========== TOAST NOTIFICATION ========== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0a2463;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast i {
+  font-size: 20px;
+  color: #22c55e;
+}
+
+/* ========== CART BADGE FIX ========== */
+#cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+#cartBadge.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== QUANTITY INPUT ========== */
+.qty-input {
+  width: 40px;
+  height: 28px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  outline: none;
+}
+
+.qty-input:focus {
+  border-color: #0a2463;
+}

@@ -8,19 +8,55 @@
   <title>Gaming Gear - AXONIX</title> <!-- ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="./gaming.css">
+  <link rel="icon" type="image/x-icon" href="./img/axonixlogo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/axonixlogo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/axonixlogo.png">
 </head>
 
-<body> <!-- HEADER -->
+<body>
+  <!-- Header -->
   <header>
     <div class="logo">AXONIX</div>
-    <nav> <a href="./index.html">Home</a>
-      <a href="./gaming.html">Gaming</a>
-      <a href="./wearables.html">Wearables</a>
-      <a href="./gadgets.html">Gadgets</a>
-      <a href="./contact.html">Contact Us</a>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./gaming.html">Gaming</a></li>
+        <li><a href="./wearables.html">Wearables</a></li>
+        <li><a href="./gadgets.html">Gadgets</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li class="cart-wrapper" id="cartToggle">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </li>
+      </ul>
     </nav>
-    <div class="cart-icon"> <i class="fa-solid fa-cart-shopping"></i> </div>
-  </header> <!-- HERO -->
+  </header>
+
+  <!-- ========== CART OVERLAY & SIDEBAR (ADD THIS) ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+      <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total:</span>
+        <span class="cart-total-value" id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+  </nav>
+  <div class="cart-icon"> <i class="fa-solid fa-cart-shopping"></i> </div>
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content"> <i class="fa-solid fa-gamepad"></i>
       <h1>Gaming Gear</h1>
@@ -29,73 +65,104 @@
   </section> <!-- PRODUCTS -->
   <section class="products-section">
     <h2>6 Products</h2>
-    <div class="products-grid"> <!-- PRODUCT 1 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1200&auto=format&fit=crop"
+    <div class="products-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card" data-id="rgb-keyboard-001" data-name="RGB Gaming Keyboard" data-price="129.99"
+        data-image="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1200&auto=format&fit=crop"
           alt="Keyboard">
         <div class="product-info">
           <h3>RGB Gaming Keyboard</h3>
-          <p> Mechanical RGB keyboard with customizable backlighting </p> <span class="rating"> ⭐ 4.8 </span>
+          <p>Mechanical RGB keyboard with customizable backlighting</p>
+          <span class="rating">⭐ 4.8</span>
           <div class="price-cart">
-            <h4>$129.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
-          </div>
-        </div>
-      </div> <!-- PRODUCT 2 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop"
-          alt="Mouse">
-        <div class="product-info">
-          <h3>Wireless Gaming Mouse</h3>
-          <p> High-precision wireless gaming mouse with 16000 DPI </p> <span class="rating"> ⭐ 4.7 </span>
-          <div class="price-cart">
-            <h4>$79.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
-          </div>
-        </div>
-      </div> <!-- PRODUCT 3 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop"
-          alt="Headset">
-        <div class="product-info">
-          <h3>Gaming Headset Pro</h3>
-          <p> 7.1 surround sound gaming headset with noise cancellation </p> <span class="rating"> ⭐ 4.9 </span>
-          <div class="price-cart">
-            <h4>$149.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
-          </div>
-        </div>
-      </div> <!-- PRODUCT 4 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop"
-          alt="Controller">
-        <div class="product-info">
-          <h3>Gaming Controller Elite</h3>
-          <p> Premium wireless controller with customizable buttons </p> <span class="rating"> ⭐ 4.6 </span>
-          <div class="price-cart">
-            <h4>$89.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
-          </div>
-        </div>
-      </div> <!-- PRODUCT 5 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1200&auto=format&fit=crop"
-          alt="Monitor">
-        <div class="product-info">
-          <h3>144Hz Gaming Monitor</h3>
-          <p> 27-inch 144Hz QHD gaming monitor with HDR </p> <span class="rating"> ⭐ 4.8 </span>
-          <div class="price-cart">
-            <h4>$299.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
-          </div>
-        </div>
-      </div> <!-- PRODUCT 6 -->
-      <div class="product-card"> <img
-          src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1200&auto=format&fit=crop"
-          alt="Mouse Pad">
-        <div class="product-info">
-          <h3>Gaming Mouse Pad XXL</h3>
-          <p> Extra large RGB mouse pad with smooth surface </p> <span class="rating"> ⭐ 4.5 </span>
-          <div class="price-cart">
-            <h4>$29.99</h4> <button> <i class="fa-solid fa-cart-shopping"></i> Add </button>
+            <h4>$129.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
           </div>
         </div>
       </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card" data-id="wireless-mouse-002" data-name="Wireless Gaming Mouse" data-price="79.99"
+        data-image="https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop"
+          alt="Mouse">
+        <div class="product-info">
+          <h3>Wireless Gaming Mouse</h3>
+          <p>High-precision wireless gaming mouse with 16000 DPI</p>
+          <span class="rating">⭐ 4.7</span>
+          <div class="price-cart">
+            <h4>$79.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card" data-id="gaming-headset-003" data-name="Gaming Headset Pro" data-price="149.99"
+        data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop"
+          alt="Headset">
+        <div class="product-info">
+          <h3>Gaming Headset Pro</h3>
+          <p>7.1 surround sound gaming headset with noise cancellation</p>
+          <span class="rating">⭐ 4.9</span>
+          <div class="price-cart">
+            <h4>$149.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card" data-id="controller-elite-004" data-name="Gaming Controller Elite" data-price="89.99"
+        data-image="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop"
+          alt="Controller">
+        <div class="product-info">
+          <h3>Gaming Controller Elite</h3>
+          <p>Premium wireless controller with customizable buttons</p>
+          <span class="rating">⭐ 4.6</span>
+          <div class="price-cart">
+            <h4>$89.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT 5 -->
+      <div class="product-card" data-id="gaming-monitor-005" data-name="144Hz Gaming Monitor" data-price="299.99"
+        data-image="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1200&auto=format&fit=crop"
+          alt="Monitor">
+        <div class="product-info">
+          <h3>144Hz Gaming Monitor</h3>
+          <p>27-inch 144Hz QHD gaming monitor with HDR</p>
+          <span class="rating">⭐ 4.8</span>
+          <div class="price-cart">
+            <h4>$299.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT 6 -->
+      <div class="product-card" data-id="mousepad-xxl-006" data-name="Gaming Mouse Pad XXL" data-price="29.99"
+        data-image="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1200&auto=format&fit=crop"
+          alt="Mouse Pad">
+        <div class="product-info">
+          <h3>Gaming Mouse Pad XXL</h3>
+          <p>Extra large RGB mouse pad with smooth surface</p>
+          <span class="rating">⭐ 4.5</span>
+          <div class="price-cart">
+            <h4>$29.99</h4>
+            <button class="btn-add"><i class="fa-solid fa-cart-shopping"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -138,7 +205,12 @@
       <p>&copy; 2026 AXONIX. All rights reserved. Built by <a href="#">Henry Chikwendu</a></p>
     </div>
   </footer>
-
+  <!-- ========== TOAST NOTIFICATION ========== -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart</span>
+  </div>
+  
   <script src="./app.js"></script>
 </body>
 

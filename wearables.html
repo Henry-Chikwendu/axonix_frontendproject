@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Wearables - AXONIX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   <link rel="stylesheet" href="./wearables.css">
+    <link rel="stylesheet" href="./wearables.css">
+    <link rel="icon" type="image/x-icon" href="./img/axonixlogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/axonixlogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/axonixlogo.png">
 </head>
+
 <body>
 
     <!-- Header -->
@@ -19,10 +24,36 @@
                 <li><a href="./wearables.html">Wearables</a></li>
                 <li><a href="./gadgets.html">Gadgets</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><i class="fas fa-shopping-cart cart-icon"></i></li>
+                <li class="cart-wrapper" id="cartToggle">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- ========== CART OVERLAY & SIDEBAR (ADD THIS ENTIRE BLOCK) ========== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total-row">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-value" id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -35,8 +66,13 @@
     <section class="products-section">
         <div class="products-count">6 Products</div>
         <div class="products-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=220&fit=crop" alt="Smart Fitness Watch" class="product-image">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card" data-id="smart-fitness-watch-001" data-name="Smart Fitness Watch"
+                data-price="199.99"
+                data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=220&fit=crop"
+                    alt="Smart Fitness Watch" class="product-image">
                 <div class="product-info">
                     <h3>Smart Fitness Watch</h3>
                     <p class="desc">Advanced fitness tracking with heart rate monitor</p>
@@ -50,8 +86,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1590658268037-6bf1e3a5637a?w=400&h=220&fit=crop" alt="Wireless Earbuds Pro" class="product-image">
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card" data-id="wireless-earbuds-pro-002" data-name="Wireless Earbuds Pro"
+                data-price="159.99"
+                data-image="https://images.unsplash.com/photo-1590658268037-6bf1e3a5637a?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf1e3a5637a?w=400&h=220&fit=crop"
+                    alt="Wireless Earbuds Pro" class="product-image">
                 <div class="product-info">
                     <h3>Wireless Earbuds Pro</h3>
                     <p class="desc">Premium wireless earbuds with active noise cancellation</p>
@@ -65,8 +106,12 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&h=220&fit=crop" alt="Smart Band Tracker" class="product-image">
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card" data-id="smart-band-tracker-003" data-name="Smart Band Tracker" data-price="79.99"
+                data-image="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&h=220&fit=crop"
+                    alt="Smart Band Tracker" class="product-image">
                 <div class="product-info">
                     <h3>Smart Band Tracker</h3>
                     <p class="desc">Sleep and activity tracker with long battery life</p>
@@ -80,8 +125,12 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=220&fit=crop" alt="VR Headset" class="product-image">
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card" data-id="vr-headset-004" data-name="VR Headset" data-price="399.99"
+                data-image="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&h=220&fit=crop"
+                    alt="VR Headset" class="product-image">
                 <div class="product-info">
                     <h3>VR Headset</h3>
                     <p class="desc">Immersive VR headset with 4K display</p>
@@ -95,8 +144,12 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&h=220&fit=crop" alt="Sport Smartwatch" class="product-image">
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card" data-id="sport-smartwatch-005" data-name="Sport Smartwatch" data-price="249.99"
+                data-image="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&h=220&fit=crop"
+                    alt="Sport Smartwatch" class="product-image">
                 <div class="product-info">
                     <h3>Sport Smartwatch</h3>
                     <p class="desc">Rugged smartwatch with GPS and water resistance</p>
@@ -110,8 +163,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=220&fit=crop" alt="Bone Conduction Headphones" class="product-image">
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card" data-id="bone-conduction-headphones-006" data-name="Bone Conduction Headphones"
+                data-price="129.99"
+                data-image="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=220&fit=crop"
+                    alt="Bone Conduction Headphones" class="product-image">
                 <div class="product-info">
                     <h3>Bone Conduction Headphones</h3>
                     <p class="desc">Open-ear headphones for safe outdoor activities</p>
@@ -125,6 +183,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -187,5 +246,12 @@
         </div>
     </footer>
 
+     <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart</span>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
+
 </html>

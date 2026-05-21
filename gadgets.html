@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Gadgets - AXONIX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   <link rel="stylesheet" href="./gadgets.css">
+    <link rel="stylesheet" href="./gadgets.css">
+    <link rel="icon" type="image/x-icon" href="./img/axonixlogo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/axonixlogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/axonixlogo.png">
 </head>
-<body>
 
+<body>
     <!-- Header -->
     <header>
         <div class="logo">AXONIX</div>
@@ -19,10 +23,37 @@
                 <li><a href="./wearables.html">Wearables</a></li>
                 <li><a href="./gadgets.html">Gadgets</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><i class="fas fa-shopping-cart cart-icon"></i></li>
+                <li class="cart-wrapper" id="cartToggle">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- ========== CART OVERLAY & SIDEBAR (ADD THIS ENTIRE BLOCK) ========== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total-row">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-value" id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -35,8 +66,13 @@
     <section class="products-section">
         <div class="products-count">6 Products</div>
         <div class="products-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1609592424308-646c5325a5b2?w=400&h=220&fit=crop" alt="Portable Power Bank" class="product-image">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card" data-id="portable-power-bank-001" data-name="Portable Power Bank"
+                data-price="49.99"
+                data-image="https://images.unsplash.com/photo-1609592424308-646c5325a5b2?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1609592424308-646c5325a5b2?w=400&h=220&fit=crop"
+                    alt="Portable Power Bank" class="product-image">
                 <div class="product-info">
                     <h3>Portable Power Bank</h3>
                     <p class="desc">20000mAh fast-charging power bank with dual USB</p>
@@ -50,8 +86,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=400&h=220&fit=crop" alt="Wireless Charger Pad" class="product-image">
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card" data-id="wireless-charger-pad-002" data-name="Wireless Charger Pad"
+                data-price="39.99"
+                data-image="https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=400&h=220&fit=crop"
+                    alt="Wireless Charger Pad" class="product-image">
                 <div class="product-info">
                     <h3>Wireless Charger Pad</h3>
                     <p class="desc">Fast wireless charging pad for all Qi devices</p>
@@ -65,8 +106,12 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=220&fit=crop" alt="USB-C Hub 7-in-1" class="product-image">
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card" data-id="usb-c-hub-7in1-003" data-name="USB-C Hub 7-in-1" data-price="59.99"
+                data-image="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=220&fit=crop"
+                    alt="USB-C Hub 7-in-1" class="product-image">
                 <div class="product-info">
                     <h3>USB-C Hub 7-in-1</h3>
                     <p class="desc">Multiport USB-C hub with HDMI and SD card reader</p>
@@ -80,8 +125,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=220&fit=crop" alt="Mini Bluetooth Speaker" class="product-image">
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card" data-id="mini-bluetooth-speaker-004" data-name="Mini Bluetooth Speaker"
+                data-price="69.99"
+                data-image="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=220&fit=crop"
+                    alt="Mini Bluetooth Speaker" class="product-image">
                 <div class="product-info">
                     <h3>Mini Bluetooth Speaker</h3>
                     <p class="desc">Portable waterproof speaker with 360° sound</p>
@@ -95,8 +145,13 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=220&fit=crop" alt="Smart LED Light Strip" class="product-image">
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card" data-id="smart-led-light-strip-005" data-name="Smart LED Light Strip"
+                data-price="44.99"
+                data-image="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=220&fit=crop"
+                    alt="Smart LED Light Strip" class="product-image">
                 <div class="product-info">
                     <h3>Smart LED Light Strip</h3>
                     <p class="desc">WiFi RGB LED strip with app control and music sync</p>
@@ -110,8 +165,12 @@
                     </div>
                 </div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=220&fit=crop" alt="Webcam 4K HD" class="product-image">
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card" data-id="webcam-4k-hd-006" data-name="Webcam 4K HD" data-price="119.99"
+                data-image="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=220&fit=crop">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=220&fit=crop"
+                    alt="Webcam 4K HD" class="product-image">
                 <div class="product-info">
                     <h3>Webcam 4K HD</h3>
                     <p class="desc">4K webcam with auto-focus and built-in mic</p>
@@ -125,8 +184,10 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
 
     <!-- Features Section -->
     <section class="features-section">
@@ -187,5 +248,13 @@
         </div>
     </footer>
 
+
+    <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart</span>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
+
 </html>

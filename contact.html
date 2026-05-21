@@ -6,24 +6,51 @@
     <title>Contact Us - AXONIX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="./contact.css">
+    <link rel="icon" type="image/x-icon" href="./img/axonixlogo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/axonixlogo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/axonixlogo.png">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">AXONIX</div>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./gaming.html">Gaming</a></li>
-                <li><a href="./wearables.html">Wearables</a></li>
-                <li><a href="./gadgets.html">Gadgets</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-                <li><i class="fas fa-shopping-cart cart-icon"></i></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="logo">AXONIX</div>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./gaming.html">Gaming</a></li>
+        <li><a href="./wearables.html">Wearables</a></li>
+        <li><a href="./gadgets.html">Gadgets</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li class="cart-wrapper" id="cartToggle">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
+   <div class="cart-overlay" id="cartOverlay"></div>
+
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+      <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total:</span>
+        <span class="cart-total-value" id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-checkout">Proceed to Checkout</button>
+    </div>
+  </div>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-icon"><i class="far fa-envelope"></i></div>
@@ -142,5 +169,11 @@
         </div>
     </footer>
 
+      <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart</span>
+  </div>
+
+  <script src="./app.js"></script>
 </body>
 </html>
