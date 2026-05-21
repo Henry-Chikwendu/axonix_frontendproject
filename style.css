@@ -11,7 +11,7 @@
    line-height: 1.6;
  }
 
- /* ========== HEADER ========== */
+ /*HEADER*/
  header {
    background: linear-gradient(135deg, #0a2463 0%, #1a3a7a 100%);
    padding: 0 60px;
@@ -57,7 +57,7 @@
    cursor: pointer;
  }
 
- /* ========== CART ICON WITH BADGE ========== */
+ /*CART ICON WITH BADGE*/
  .cart-wrapper {
    position: relative;
    cursor: pointer;
@@ -92,7 +92,7 @@
    transform: scale(1);
  }
 
- /* ========== OVERLAY ========== */
+ /*OVERLAY*/
  .cart-overlay {
    position: fixed;
    top: 0;
@@ -111,7 +111,7 @@
    visibility: visible;
  }
 
- /* ========== CART SIDEBAR ========== */
+ /*CART SIDEBAR*/
  .cart-sidebar {
    position: fixed;
    top: 0;
@@ -313,7 +313,7 @@
  }
 
 
- /* ========== HERO SECTION ========== */
+ /*HERO SECTION*/
  .hero {
    background: linear-gradient(135deg, #0a2463 0%, #000 100%);
    min-height: 85vh;
@@ -385,7 +385,7 @@
    transform: translateY(-2px);
  }
 
- /* ========== TRUST BADGES ========== */
+ /*TRUST BADGES*/
  .trust-badges {
    padding: 80px 40px 40px;
    background: #fff;
@@ -434,7 +434,7 @@
    color: #666;
  }
 
- /* ========== SHOP BY CATEGORY ========== */
+ /* SHOP BY CATEGORY */
  .categories {
    padding: 60px 40px 80px;
    background: #fff;
