@@ -501,89 +501,139 @@ document.addEventListener('DOMContentLoaded', () => {
   window.cart = new Cart();
 });
 
-// Hamburger Menu Functionality
-class MobileNav {
+// ============================================
+// PROFESSIONAL HAMBURGER MENU FUNCTIONALITY
+// Add this to your existing JavaScript file
+// ============================================
+
+class ResponsiveMenu {
   constructor() {
     this.init();
   }
 
   init() {
-    this.createMobileElements();
+    this.createHamburgerElements();
     this.cacheDOM();
     this.bindEvents();
+    this.updateCartBadge();
   }
 
-  createMobileElements() {
+  createHamburgerElements() {
+    // Only add if hamburger doesn't exist
+    if (document.querySelector('.hamburger')) return;
+
     // Add hamburger button to header
     const header = document.querySelector('header');
-    const hamburgerHTML = `
-      <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    `;
-    header.insertAdjacentHTML('beforeend', hamburgerHTML);
-
-    // Add mobile navigation menu
-    const mobileNavHTML = `
-      <div class="mobile-nav" id="mobileNav">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="nav-overlay" id="navOverlay"></div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', mobileNavHTML);
-
-    // Add mobile cart wrapper
-    const navUl = document.querySelector('nav ul');
-    if (navUl) {
-      const mobileCartHTML = `
-        <li class="mobile-cart-wrapper">
-          <div class="cart-icon" id="mobileCartToggle">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-badge" id="mobileCartBadge">0</span>
-          </div>
-        </li>
+    const nav = document.querySelector('nav');
+    
+    if (header && nav) {
+      const hamburgerHTML = `
+        <button class="hamburger" id="hamburgerMenu" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       `;
-      navUl.insertAdjacentHTML('beforeend', mobileCartHTML);
+      
+      // Insert hamburger before nav
+      header.insertBefore(this.createElementFromHTML(hamburgerHTML), nav);
+    }
+
+    // Create mobile navigation if it doesn't exist
+    if (!document.querySelector('.mobile-nav')) {
+      const mobileNavHTML = `
+        <div class="mobile-nav" id="mobileNav">
+          <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">AXONIX</div>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+          </div>
+          <ul id="mobileNavMenu">
+            ${this.getNavigationLinks()}
+            <li class="mobile-nav-cart">
+              <a href="#" class="cart-wrapper" id="mobileCartLink">
+                <span class="cart-icon">
+                  <i class="fas fa-shopping-cart"></i> Cart
+                </span>
+                <span class="cart-badge" id="mobileCartBadge">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="nav-overlay" id="navOverlay"></div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', mobileNavHTML);
     }
   }
 
+  getNavigationLinks() {
+    // Get existing navigation links from desktop nav
+    const desktopLinks = document.querySelectorAll('nav ul li:not(.cart-wrapper) a');
+    let links = '';
+    
+    if (desktopLinks.length > 0) {
+      desktopLinks.forEach(link => {
+        links += `<li><a href="${link.getAttribute('href')}">${link.textContent}</a></li>`;
+      });
+    } else {
+      // Default links if none exist
+      links = `
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      `;
+    }
+    
+    return links;
+  }
+
+  createElementFromHTML(htmlString) {
+    const div = document.createElement('div');
+    div.innerHTML = htmlString.trim();
+    return div.firstChild;
+  }
+
   cacheDOM() {
-    this.hamburger = document.getElementById('hamburger');
+    this.hamburger = document.getElementById('hamburgerMenu');
     this.mobileNav = document.getElementById('mobileNav');
+    this.mobileNavClose = document.getElementById('mobileNavClose');
     this.navOverlay = document.getElementById('navOverlay');
-    this.mobileCartToggle = document.getElementById('mobileCartToggle');
+    this.mobileCartLink = document.getElementById('mobileCartLink');
+    this.mobileCartBadge = document.getElementById('mobileCartBadge');
+    this.body = document.body;
   }
 
   bindEvents() {
     if (this.hamburger) {
-      this.hamburger.addEventListener('click', () => this.toggleMobileNav());
+      this.hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.openMenu();
+      });
+    }
+    
+    if (this.mobileNavClose) {
+      this.mobileNavClose.addEventListener('click', () => this.closeMenu());
     }
     
     if (this.navOverlay) {
-      this.navOverlay.addEventListener('click', () => this.closeMobileNav());
+      this.navOverlay.addEventListener('click', () => this.closeMenu());
     }
     
-    if (this.mobileCartToggle) {
-      this.mobileCartToggle.addEventListener('click', () => {
+    if (this.mobileCartLink) {
+      this.mobileCartLink.addEventListener('click', (e) => {
+        e.preventDefault();
         if (window.cart && window.cart.openCart) {
           window.cart.openCart();
-          this.closeMobileNav();
+          this.closeMenu();
         }
       });
     }
     
-    // Close mobile nav when a link is clicked
+    // Close menu when clicking on any mobile nav link
     if (this.mobileNav) {
-      this.mobileNav.querySelectorAll('a').forEach(link => {
+      this.mobileNav.querySelectorAll('a:not(#mobileCartLink)').forEach(link => {
         link.addEventListener('click', () => {
-          this.closeMobileNav();
+          setTimeout(() => this.closeMenu(), 100);
         });
       });
     }
@@ -591,42 +641,67 @@ class MobileNav {
     // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.mobileNav && this.mobileNav.classList.contains('open')) {
-        this.closeMobileNav();
+        this.closeMenu();
       }
     });
+    
+    // Update cart badge periodically
+    setInterval(() => this.updateCartBadge(), 100);
   }
 
-  toggleMobileNav() {
-    this.mobileNav.classList.toggle('open');
-    this.navOverlay.classList.toggle('active');
-    document.body.style.overflow = this.mobileNav.classList.contains('open') ? 'hidden' : '';
-    
-    // Animate hamburger to X
-    const spans = this.hamburger.querySelectorAll('span');
-    if (this.mobileNav.classList.contains('open')) {
-      spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-    } else {
-      spans[0].style.transform = 'none';
-      spans[1].style.opacity = '1';
-      spans[2].style.transform = 'none';
+  openMenu() {
+    if (this.mobileNav) {
+      this.mobileNav.classList.add('open');
+      this.navOverlay.classList.add('active');
+      this.body.classList.add('menu-open');
+      this.body.style.overflow = 'hidden';
+      
+      // Animate hamburger to X
+      if (this.hamburger) {
+        const spans = this.hamburger.querySelectorAll('span');
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      }
     }
   }
 
-  closeMobileNav() {
-    this.mobileNav.classList.remove('open');
-    this.navOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    
-    const spans = this.hamburger.querySelectorAll('span');
-    spans[0].style.transform = 'none';
-    spans[1].style.opacity = '1';
-    spans[2].style.transform = 'none';
+  closeMenu() {
+    if (this.mobileNav) {
+      this.mobileNav.classList.remove('open');
+      this.navOverlay.classList.remove('active');
+      this.body.classList.remove('menu-open');
+      this.body.style.overflow = '';
+      
+      // Animate X back to hamburger
+      if (this.hamburger) {
+        const spans = this.hamburger.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    }
+  }
+
+  updateCartBadge() {
+    if (window.cart && this.mobileCartBadge) {
+      const count = window.cart.getItemCount ? window.cart.getItemCount() : 0;
+      this.mobileCartBadge.textContent = count;
+      
+      if (count > 0) {
+        this.mobileCartBadge.classList.add('show');
+      } else {
+        this.mobileCartBadge.classList.remove('show');
+      }
+    }
   }
 }
 
-// Initialize mobile nav when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  window.mobileNav = new MobileNav();
-});
+// Initialize responsive menu when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.responsiveMenu = new ResponsiveMenu();
+  });
+} else {
+  window.responsiveMenu = new ResponsiveMenu();
+}
